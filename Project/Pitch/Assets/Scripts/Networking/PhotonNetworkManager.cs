@@ -6,7 +6,17 @@ using UnityEngine.UI;
 
 public class PhotonNetworkManager : MonoBehaviour {
 
-    [SerializeField] private Text connectingText;
+    [System.Serializable]
+    public class UISettings
+    {
+        public Text connectingText;
+        public Text pingText;
+        public Image LobbyPanel;
+
+    }
+
+    public UISettings uiSettings = new UISettings();
+
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject lobbyCam;
     [SerializeField] private Transform spawnPos;
@@ -21,25 +31,27 @@ public class PhotonNetworkManager : MonoBehaviour {
 
     public virtual void OnConnectedToMaster()
     {
-        //PhotonNetwork.JoinLobby();
-        //PhotonNetwork.CreateRoom("New", null, null);
+        PhotonNetwork.JoinLobby();
         
 
 
     }
     public virtual void OnJoinedLobby()
     {
-        refreshingRooms();
+        //refreshingRooms();
 
-        Debug.Log("You joined the Lobby");
+        Debug.Log(PhotonNetwork.lobby.Name);
+        PhotonNetwork.CreateRoom("test", null, null);
+
+        PhotonNetwork.JoinRoom("test");
 
         PhotonNetwork.JoinOrCreateRoom("New", null, null);
-        
-        
-        //PhotonNetwork.JoinRoom("New");
+
     }
     public virtual void OnJoinedRoom()
     {
+        Debug.Log("Lobby Name: " + PhotonNetwork.room.Name);
+
         PhotonNetwork.Instantiate(player.name, spawnPos.position, spawnPos.rotation, 0);
         lobbyCam.SetActive(false);
     }
@@ -47,9 +59,12 @@ public class PhotonNetworkManager : MonoBehaviour {
     public void refreshingRooms()
     {
         rooms = PhotonNetwork.GetRoomList();
+        Debug.Log(rooms.Length);
+
         for (int i = 0; i < rooms.Length; i++)
         {
             roomNames[i] = rooms[i].Name;
+            Debug.Log(rooms[i].Name);
         }
     }
 
@@ -57,6 +72,10 @@ public class PhotonNetworkManager : MonoBehaviour {
     void Update () 
     {
         //NOTE .ToString() not in update to intence
-        connectingText.text = PhotonNetwork.connectionStateDetailed.ToString();
-	}
+        uiSettings.connectingText.text = PhotonNetwork.connectionStateDetailed.ToString();
+        uiSettings.pingText.text = "Ping:" + PhotonNetwork.GetPing().ToString();
+
+        Debug.Log(rooms.Length);
+
+    }
 }
