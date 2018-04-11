@@ -25,7 +25,6 @@ public class RoomListing : MonoBehaviour {
 
     public void JoinRoom()
     {
-        string room;
         Text[] rooms = this.GetComponentsInChildren<Text>();
 
         foreach(Text r in rooms)

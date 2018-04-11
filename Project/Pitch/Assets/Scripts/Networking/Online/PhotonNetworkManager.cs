@@ -41,7 +41,6 @@ public class PhotonNetworkManager : MonoBehaviour {
     private void OnJoinedLobby()
     {
 
-        Debug.Log("Joined lobby.");
 
     }
 
