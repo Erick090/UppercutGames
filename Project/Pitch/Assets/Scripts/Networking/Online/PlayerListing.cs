@@ -12,7 +12,7 @@ public class PlayerListing : MonoBehaviour {
 
     public void ApplyPhotonPlayer(PhotonPlayer photonPlayer)
     {
-        playerName.text = "  " + photonPlayer.NickName;
+        playerName.text = "  " + LobbyNetwork.Instance.PlayerName;
     }
 	
 }
