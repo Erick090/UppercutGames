@@ -24,7 +24,7 @@ Temp/
 *.booproj
 *.svd
 *.pdb
-//*.meta
+*.meta
 
 # Unity3D generated meta files
 *.pidb.meta

@@ -46,7 +46,7 @@ public class Cam_CTRL : Game_CTRL {
         xRotation += Input.GetAxis("Mouse Y") * lookSensitivity;
 
         // use Formula from geogebra here = f(x) = x²/10
-        this.transform.position += new Vector3(0, Input.GetAxis("Mouse Y") * lookSensitivity, 0);
+        this.transform.position -= new Vector3(0, Input.GetAxis("Mouse Y") * lookSensitivity, 0);
         xRotation = Mathf.Clamp(Input.GetAxis("Mouse Y") * lookSensitivity, 0, 3);
         //this.transform.position = new Vector3(xRotation,Mathf.Clamp(transform.localPosition.y, 0, 3), 0);
         //currentXRotation = Mathf.SmoothDamp(currentXRotation, xRotation, ref xRotationV, lookSmoothDamp);
