@@ -26,7 +26,8 @@ public class RoomManager : MonoBehaviour
 
     public void OnClick_CreateRoom()
     {
-        RoomOptions roomOptions = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = 4 };
+        int max = System.Convert.ToInt32("9");
+        RoomOptions roomOptions = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = System.Convert.ToByte(maxPlayer.text) };
 
         if(PhotonNetwork.CreateRoom(roomName.text, roomOptions, TypedLobby.Default))
         {
@@ -53,7 +54,19 @@ public class RoomManager : MonoBehaviour
             }
             else if (element.name == "Mode")
             {
-                element.text = mode.text;
+                switch(mode.text)
+                {
+                    case "Deathmatch":
+                        element.text = "DM";
+
+                        break;
+
+                    case "Team Deathmatch":
+                        element.text = "TDM";
+
+                        break;
+
+                }
             }
         }
     }
