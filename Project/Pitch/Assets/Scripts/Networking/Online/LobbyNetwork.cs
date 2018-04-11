@@ -7,6 +7,9 @@ public class LobbyNetwork : MonoBehaviour {
     public static LobbyNetwork Instance;
     public string PlayerName { get; private set; }
 
+    private PhotonView photonView;
+
+
 
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject lobbyCam;
@@ -23,6 +26,9 @@ public class LobbyNetwork : MonoBehaviour {
 
     void Start ()
     {
+
+        photonView = GetComponent<PhotonView>();
+
         Debug.Log("Connecting to Server . . .");
         PhotonNetwork.ConnectUsingSettings("0.1");
 
@@ -43,7 +49,11 @@ public class LobbyNetwork : MonoBehaviour {
     public void InitializPlayer()
     {
         GameObject Player = Instantiate(player, spawnPos.position, spawnPos.rotation);
-        lobbyPanel.SetActive(false);
-        lobbyCam.SetActive(false);
+
+        if (!photonView.isMine)
+        {
+            lobbyPanel.SetActive(false);
+            lobbyCam.SetActive(false);
+        }
     }
 }
