@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class RoomManager : MonoBehaviour
 {
 
-    [SerializeField] private PhotonNetworkManager PNManager;
     [SerializeField] private Text roomName;
     [SerializeField] private Text maxPlayer;
     [SerializeField] private Text mode;
@@ -46,7 +45,7 @@ public class RoomManager : MonoBehaviour
         {
             if(element.name == "Rooms")
             {
-                element.text = "  " + roomName.text;
+                element.text = roomName.text;
             }
             else if(element.name == "PlayerValue")
             {

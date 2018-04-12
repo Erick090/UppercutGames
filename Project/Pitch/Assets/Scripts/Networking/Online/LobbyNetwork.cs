@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class LobbyNetwork : MonoBehaviour {
 
@@ -12,6 +14,7 @@ public class LobbyNetwork : MonoBehaviour {
 
 
     [SerializeField] private GameObject player;
+
     [SerializeField] private GameObject lobbyCam;
     [SerializeField] private GameObject lobbyPanel;
     [SerializeField] private Transform spawnPos;
@@ -46,14 +49,34 @@ public class LobbyNetwork : MonoBehaviour {
 
     }
 
+    private void OnJoinedRoom()
+    {
+        Debug.Log("Joined room");
+    }
+
     public void InitializPlayer()
     {
-        GameObject Player = Instantiate(player, spawnPos.position, spawnPos.rotation);
+        GameObject Player = PhotonNetwork.Instantiate("Testo", spawnPos.position, spawnPos.rotation, 0);
 
-        if (!photonView.isMine)
+        if (lobbyCam.GetPhotonView().isMine)
         {
-            lobbyPanel.SetActive(false);
+            print("lobbyCam true");
             lobbyCam.SetActive(false);
         }
+        else
+        {
+            lobbyCam.SetActive(false);
+        }
+
+
+        if (lobbyPanel.GetPhotonView().isMine)
+        {
+            print("lobbyPanel true");
+
+            lobbyPanel.SetActive(false);
+        }
+        else
+            lobbyPanel.SetActive(false);
+
     }
 }

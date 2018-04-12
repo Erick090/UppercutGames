@@ -82,7 +82,7 @@ public class Char_CTRL : MonoBehaviour {
         Debug.Log("jopp");
 
         //punchProjectile = GameObject.Find(projectileName);
-        projTest = GameObject.Find(projectileName).GetComponent<ProjectileManager>();
+        //projTest = GameObject.Find(projectileName).GetComponent<ProjectileManager>();
 
     }
     void GetInput()

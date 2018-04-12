@@ -21,11 +21,15 @@ public class PlayerNetwork : MonoBehaviour {
         if(!photonView.isMine)
         {
             playerCamera.SetActive(false);
+            Debug.Log("playerCamera is not mine");
             foreach(MonoBehaviour m in playerScripts)
             {
-                m.enabled = false;            
+                m.enabled = false;   
+                Debug.Log(m.name + " is not mine");
+
             }
         }
+        
     }
 
    
