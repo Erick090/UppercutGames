@@ -60,7 +60,6 @@ public class Char_CTRL : MonoBehaviour {
     [SerializeField]
     private GameObject punchProjectile;
 
-    public ProjectileManager projTest;
 
     public string projectileName;
     public Vector3 EndPosition;
@@ -82,7 +81,6 @@ public class Char_CTRL : MonoBehaviour {
         Debug.Log("jopp");
 
         //punchProjectile = GameObject.Find(projectileName);
-        //projTest = GameObject.Find(projectileName).GetComponent<ProjectileManager>();
 
     }
     void GetInput()
@@ -126,11 +124,6 @@ public class Char_CTRL : MonoBehaviour {
         //{
         //    projTest.LerpRight();
         //}
-
-    }
-
-    private void FixedUpdate()
-    {
 
     }
 
@@ -269,5 +262,13 @@ public class Char_CTRL : MonoBehaviour {
         yield return new WaitForSeconds(2);
 
         punchProj.transform.position = Vector3.Lerp(punchProj.transform.position, savedTransform, time);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.tag == "Punch")
+        {
+
+        }
     }
 }
