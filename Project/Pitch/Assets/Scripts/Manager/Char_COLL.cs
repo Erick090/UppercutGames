@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Char_COLL : MonoBehaviour {
 
 
@@ -52,15 +53,7 @@ public class Char_COLL : MonoBehaviour {
         }
         if (other.tag == "Punch")
         {
-            Vector3 dir = -this.transform.position;
-
-            dir = -dir.normalized;
-
-            print("vorher: " + this.GetComponent<Rigidbody>().velocity);
-
-            this.GetComponent<Rigidbody>().velocity = other.GetComponent<Projectile_CTRL>().shootDir;
-
-            print("nachher: " + this.GetComponent<Rigidbody>().velocity);
+            this.GetComponent<Rigidbody>().velocity += transform.TransformDirection(other.GetComponent<Projectile_CTRL>().shootDir);
 
 
             //rBody.velocity += transform.TransformDirection(collider.GetComponent<Projectile_CTRL>().shootDir + new Vector3(knockbackValue, knockbackValue, knockbackValue));

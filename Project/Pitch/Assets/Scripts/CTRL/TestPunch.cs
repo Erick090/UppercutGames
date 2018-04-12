@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class TestPunch : MonoBehaviour {
 
      Rigidbody rBody;
@@ -13,30 +14,20 @@ public class TestPunch : MonoBehaviour {
         rBody = GetComponent<Rigidbody>();
     }
 
-    private void OnTriggerEnter(Collider collider)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collider.tag == "Punch")
+        if (other.tag == "Punch")
         {
-            Vector3 dir = - this.transform.position;
-
-            dir = -dir.normalized;
-
-            print(collider.GetComponent<Projectile_CTRL>().shootDir);
-
-            print("vorher: " + rBody.velocity);
-
-            rBody.velocity = collider.GetComponent<Projectile_CTRL>().shootDir ;
-
-            print("nachher: " + rBody.velocity);
+            this.GetComponent<Rigidbody>().velocity += transform.TransformDirection(other.GetComponent<Projectile_CTRL>().shootDir);
 
 
             //rBody.velocity += transform.TransformDirection(collider.GetComponent<Projectile_CTRL>().shootDir + new Vector3(knockbackValue, knockbackValue, knockbackValue));
             //rBody.AddForce(dir * knockbackValue);
 
 
-            if (collider.GetComponent<Projectile_CTRL>().isShooting)
+            if (other.GetComponent<Projectile_CTRL>().isShooting)
             {
-                collider.GetComponent<Projectile_CTRL>().isShooting = false;
+                other.GetComponent<Projectile_CTRL>().isShooting = false;
             }
         }
     }
