@@ -30,7 +30,7 @@ public class LevelManager : MonoBehaviour
                 Cursor.visible = true;
                 break;
             case "Game":
-                Cursor.visible = false;
+                //Cursor.visible = false;
                 break;
         }
     }

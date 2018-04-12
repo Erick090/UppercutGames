@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class deathPlayer : MonoBehaviour {
+public class deathPlayer : MonoBehaviour
+{
+    [SerializeField] private GameObject spawnPos;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Player")
+        {
+            PhotonNetwork.Destroy(other.gameObject);
+            GameObject Player = PhotonNetwork.Instantiate("Testo", spawnPos.transform.position, spawnPos.transform.rotation, 0);
+
+        }
+    }
+
 }
