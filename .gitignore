@@ -1,0 +1,16 @@
+
+Project/Pitch/Pitch\.csproj
+
+Project/Pitch/Pitch\.Editor\.csproj
+
+Project/Pitch/Pitch\.Plugins\.csproj
+
+Project/Pitch/Pitch\.sln
+
+Project/Pitch/Temp/
+
+Project/Pitch/Library/UnityAssemblies/
+
+Project/Pitch/Library/
+
+*.csproj
