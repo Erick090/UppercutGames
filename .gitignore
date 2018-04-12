@@ -12,3 +12,5 @@ Project/Pitch/Temp/
 Project/Pitch/Library/UnityAssemblies/
 
 Project/Pitch/Library/
+
+*.csproj
