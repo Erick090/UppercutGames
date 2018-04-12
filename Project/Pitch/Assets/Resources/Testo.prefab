@@ -307,6 +307,11 @@ MonoBehaviour:
     FORWARD_AXIS: Vertical
     TURN_AXIS: Horizontal
     JUMP_AXIS: Jump
+    SHOT_BUTTON: Shot
+  punchProjectile: {fileID: 1911053905689758, guid: fee18c5d264944d4a8ec2b8a5bc13417,
+    type: 2}
+  projectileName: 
+  EndPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &114129497881989020
 MonoBehaviour:
   m_ObjectHideFlags: 1
