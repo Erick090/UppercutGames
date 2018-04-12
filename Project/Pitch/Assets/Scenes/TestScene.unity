@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -4085,7 +4085,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1810549068}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9898163
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4610,7 +4610,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 577314006}
-  - component: {fileID: 577314005}
   - component: {fileID: 577314007}
   - component: {fileID: 577314008}
   m_Layer: 0
@@ -4620,21 +4619,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &577314005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 577314004}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fedef06666f99404c98e0407ee39d462, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uiSettings:
-    connectingText: {fileID: 1505421763}
-    pingText: {fileID: 1710031892}
-    LobbyPanel: {fileID: 1973319702}
 --- !u!4 &577314006
 Transform:
   m_ObjectHideFlags: 0
@@ -4678,7 +4662,7 @@ MonoBehaviour:
   group: 0
   OwnerShipWasTransfered: 0
   prefixBackup: -1
-  synchronization: 3
+  synchronization: 2
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
@@ -6423,6 +6407,7 @@ GameObject:
   - component: {fileID: 780641398}
   - component: {fileID: 780641397}
   - component: {fileID: 780641396}
+  - component: {fileID: 780641400}
   m_Layer: 0
   m_Name: LobbyCam
   m_TagString: Untagged
@@ -6493,6 +6478,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &780641400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 780641395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 3
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 780641399}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 2
+  instantiationId: 2
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
 --- !u!1001 &807714658
 Prefab:
   m_ObjectHideFlags: 0
@@ -9121,7 +9132,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 945453947}
   m_HandleRect: {fileID: 945453946}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -14136,6 +14147,7 @@ GameObject:
   - component: {fileID: 1973319701}
   - component: {fileID: 1973319703}
   - component: {fileID: 1973319702}
+  - component: {fileID: 1973319704}
   m_Layer: 5
   m_Name: LobbyPanel
   m_TagString: Untagged
@@ -14201,6 +14213,32 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1973319700}
+--- !u!114 &1973319704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1973319700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 2
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 1973319701}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 3
+  instantiationId: 3
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
 --- !u!1 &1974347166 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 515f8a09b46481d4dae98a734e558bbc, type: 3}
@@ -14676,7 +14714,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0054f4804c6fa434d98d008a4723d802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PNManager: {fileID: 0}
   roomName: {fileID: 44293426}
   maxPlayer: {fileID: 2144556468}
   mode: {fileID: 1753034124}
