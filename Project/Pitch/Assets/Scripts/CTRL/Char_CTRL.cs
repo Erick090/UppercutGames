@@ -48,7 +48,7 @@ public class Char_CTRL : MonoBehaviour {
     private Char_COLL colliderCs;
 
     private Quaternion targetRotation;
-    private Rigidbody rBody;
+    [HideInInspector] public Rigidbody rBody;
     private float forwardInput, turnInput, jumpInput;
 
     public Quaternion TargetRotation
@@ -58,11 +58,7 @@ public class Char_CTRL : MonoBehaviour {
 
     #region punchShotProperties
     [SerializeField]
-    private GameObject punchProjectile;
-
-
-    public string projectileName;
-    public Vector3 EndPosition;
+    float knockbackValue = 10f;
     #endregion
 
     void Start()
@@ -110,31 +106,6 @@ public class Char_CTRL : MonoBehaviour {
             Jump();
             rBody.velocity = transform.TransformDirection(physSetttings.velocity);
         }
-
-        if (Input.GetButtonDown(inputSettings.SHOT_BUTTON))
-        {
-            StartCoroutine(Punching(5f));
-        }
-
-        //PunchShot(punchProjectile, inputSettings.SHOT_BUTTON);
-
-        //if (Input.GetButtonDown(inputSettings.SHOT_BUTTON))
-        //{
-        //    //punchProjectile.transform.position = Vector3.Lerp(punchProjectile.transform.position, EndPosition, 0.1f);
-        //    //Lerp(punchProjectile);
-        //    projTest.LerpLeft();
-        //}
-
-        //if (Input.GetKeyDown(KeyCode.M))
-        //{
-        //    projTest.LerpRight();
-        //}
-
-    }
-
-    Vector3 Lerp(GameObject punchProj)
-    {
-        return punchProj.transform.position = Vector3.Lerp(punchProj.transform.position, EndPosition, 0.5f);
     }
 
     void MoveWhileJump()
@@ -237,44 +208,28 @@ public class Char_CTRL : MonoBehaviour {
         }
     }
 
-    //void PunchShot(GameObject punchProj, string shotInput )
-    //{
-    //    if (punchProj != null)
-    //    {
-    //        if (Input.GetButtonDown(shotInput))
-    //        {
-    //            StartCoroutine(Punching(punchProj, 20, 0.5f));
-    //        }
-    //    }
-
-    //    else
-    //        Debug.LogError("Dir fehlt dein Schläger!!");
-
-    //}
-
-    IEnumerator Punching(float range)
+    private void OnTriggerEnter(Collider collider)
     {
-        //GameObject punchProj = punchProjectile;
-        //Instantiate(punchProj, this.transform);
-        //Vector3 savedTransform = punchProj.transform.position;
-        //punchProj.transform.position = Vector3.Lerp(punchProj.transform.position,
-        //                                             new Vector3(punchProj.transform.position.x,
-        //                                                         punchProj.transform.position.y,
-        //                                                         punchProj.transform.position.z + range),
-        //                                             time);
-
-
-        yield return new WaitForSeconds(2);
-
-        //Destroy(punchProj);
-        //punchProj.transform.position = Vector3.Lerp(punchProj.transform.position, savedTransform, time);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.collider.tag == "Punch")
+        if (collider.tag == "Punch")
         {
+            Vector3 dir = -this.transform.position;
 
+            dir = -dir.normalized;
+
+            print(collider.GetComponent<Projectile_CTRL>().shootDir);
+
+
+            rBody.velocity = collider.GetComponent<Projectile_CTRL>().shootDir;
+
+            //rBody.velocity += transform.TransformDirection(collider.GetComponent<Projectile_CTRL>().shootDir + new Vector3(knockbackValue, knockbackValue, knockbackValue));
+            //rBody.AddForce(dir * knockbackValue);
+
+            print("Knockback value: " + dir * knockbackValue);
+
+            if (collider.GetComponent<Projectile_CTRL>().isShooting)
+            {
+                collider.GetComponent<Projectile_CTRL>().isShooting = false;
+            }
         }
     }
 }

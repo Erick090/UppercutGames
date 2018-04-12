@@ -20,7 +20,9 @@ public class Projectile_CTRL : MonoBehaviour {
     [SerializeField]
     float timeShot = 2f;
 
-    bool isShooting = false;
+    [HideInInspector]
+    public bool isShooting = false;
+
     Vector3 savedLocalPosition;
 
     [Space(10)]
@@ -28,6 +30,16 @@ public class Projectile_CTRL : MonoBehaviour {
     string shotButton = "Shot";
 
     Direction dirVec;
+    PhotonView photonView;
+
+    [SerializeField]
+    Char_CTRL playerRBody;
+
+    [HideInInspector]
+    public Vector3 shootDir;
+
+
+    float knockbackValue = 100f;
 
     //[SerializeField]
     //Char_CTRL player;
@@ -35,6 +47,7 @@ public class Projectile_CTRL : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         //dirVec = new Direction(LerpShot);
+        photonView = new PhotonView();
         savedLocalPosition = this.transform.localPosition;
         print("Saved: " + savedLocalPosition);
         print("Actual: " + this.transform.localPosition);
@@ -48,6 +61,7 @@ public class Projectile_CTRL : MonoBehaviour {
 
         if (Input.GetButtonDown(shotButton))
         {
+            shootDir = playerRBody.transform.TransformDirection(new Vector3(knockbackValue, knockbackValue, knockbackValue));
             StartCoroutine(Shooting());
         }
 
@@ -102,11 +116,17 @@ public class Projectile_CTRL : MonoBehaviour {
 
         //print("ShootStart");
 
-        isShooting = true;
+        if(!isShooting)
+        {
+            isShooting = true;
+        }
 
         yield return new WaitForSeconds(timeShot);
 
-        isShooting = false;
+        if (isShooting)
+        {
+            isShooting = false;
+        } 
 
         //print("ShootEnd");
 

@@ -30,7 +30,7 @@ GameObject:
   - component: {fileID: 114552627505546470}
   m_Layer: 0
   m_Name: Testo
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,9 +47,11 @@ GameObject:
   - component: {fileID: 65649043000805794}
   - component: {fileID: 23249428733955428}
   - component: {fileID: 114314988618802160}
+  - component: {fileID: 114178412973356078}
+  - component: {fileID: 114179971337591702}
   m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
+  m_Name: Glove
+  m_TagString: Punch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80,7 +82,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1089837592810098}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.056, y: 0.149, z: 0.611}
+  m_LocalPosition: {x: -0.532, y: 0.926, z: -0.012}
   m_LocalScale: {x: 0.31412983, y: 0.31412983, z: 0.31412983}
   m_Children: []
   m_Father: {fileID: 4035820702658974}
@@ -93,7 +95,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1033478180564928}
   m_LocalRotation: {x: 0, y: 0.2588191, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 16.8, y: 11.1, z: -40.2}
+  m_LocalPosition: {x: -324.304, y: 183.65204, z: 136.55702}
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children:
   - {fileID: 4397124694154078}
@@ -224,7 +226,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1033478180564928}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 7c8935e649cfc554195fb243a477c363, type: 3}
 --- !u!33 &33807612183600874
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -257,8 +259,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.0201232, z: 1}
-  m_Center: {x: 0, y: -0.0100615425, z: 0}
+  m_Size: {x: 1, y: 1.86, z: 1}
+  m_Center: {x: 0, y: 0.93, z: 0}
 --- !u!65 &65649043000805794
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -266,7 +268,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1089837592810098}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -286,7 +288,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1033478180564928}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 164eff566628b4fe1ab802c900e383db, type: 3}
+  m_Script: {fileID: 11500000, guid: 32b2e2909968aa24db58aae0ada98177, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSettings:
@@ -309,10 +311,8 @@ MonoBehaviour:
     TURN_AXIS: Horizontal
     JUMP_AXIS: Jump
     SHOT_BUTTON: Shot
-  punchProjectile: {fileID: 1911053905689758, guid: fee18c5d264944d4a8ec2b8a5bc13417,
-    type: 2}
-  projectileName: 
-  EndPosition: {x: 0, y: 0, z: 0}
+  rBody: {fileID: 0}
+  knockbackValue: 10
 --- !u!114 &114129497881989020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -334,6 +334,44 @@ MonoBehaviour:
   ownershipTransfer: 0
   ObservedComponents:
   - {fileID: 114552627505546470}
+  - {fileID: 114365058115346972}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 0
+  instantiationId: -1
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
+--- !u!114 &114178412973356078
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1089837592810098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae92aac5e55106e459edf0deb2035b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114179971337591702
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1089837592810098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 3
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 114178412973356078}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
@@ -347,13 +385,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1089837592810098}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 190e1e6eb054809418e5a89211342d82, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c7df8d222bc9ba42be9d2d5c7b0d8b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speedShot: 5
   speedBack: 5
   timeShot: 2
+  isShooting: 0
   shotButton: Shot
+  playerRBody: {fileID: 114108585705518590}
+  shootDir: {x: 0, y: 0, z: 0}
 --- !u!114 &114333977087815798
 MonoBehaviour:
   m_ObjectHideFlags: 1

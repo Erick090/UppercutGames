@@ -50,6 +50,28 @@ public class Char_COLL : MonoBehaviour {
             print("exit JumpPad" + newVelocity);
 
         }
+        if (other.tag == "Punch")
+        {
+            Vector3 dir = -this.transform.position;
+
+            dir = -dir.normalized;
+
+            print("vorher: " + this.GetComponent<Rigidbody>().velocity);
+
+            this.GetComponent<Rigidbody>().velocity = other.GetComponent<Projectile_CTRL>().shootDir;
+
+            print("nachher: " + this.GetComponent<Rigidbody>().velocity);
+
+
+            //rBody.velocity += transform.TransformDirection(collider.GetComponent<Projectile_CTRL>().shootDir + new Vector3(knockbackValue, knockbackValue, knockbackValue));
+            //rBody.AddForce(dir * knockbackValue);
+
+
+            if (other.GetComponent<Projectile_CTRL>().isShooting)
+            {
+                other.GetComponent<Projectile_CTRL>().isShooting = false;
+            }
+        }
 
     }
     void OnTriggerStay(Collider other)
