@@ -39,7 +39,7 @@ public class Projectile_CTRL : MonoBehaviour {
     public Vector3 shootDir;
 
 
-    float knockbackValue = 100f;
+    float knockbackValue = 10f;
 
     //[SerializeField]
     //Char_CTRL player;
