@@ -7,8 +7,13 @@ using UnityEngine.UI;
 public class RoomListing : MonoBehaviour {
 
     [SerializeField] private Text roomNameText;
+    [SerializeField] private Text playerValueText;
+    [SerializeField] private Text modeValueText;
+
 
     public string RoomName { get; private set; }
+    public string PlayerValue { get; private set; }
+    public string ModeValue { get; private set; }
 
     public bool Updated { get; set; }
 
@@ -17,10 +22,22 @@ public class RoomListing : MonoBehaviour {
 		
 	}
 
-    public void SetRoomNameText(string text)
+    public void SetRoomNameText(string roomName)
     {
-        RoomName = text;
+        RoomName = roomName;
         roomNameText.text = RoomName;
+    }
+
+    public void SetPlayerValueText(string maxPlayer, string actualPlayer)
+    {
+        PlayerValue = actualPlayer + "/" + maxPlayer;
+        playerValueText.text = PlayerValue;
+    }
+
+    public void SetModeValueText(string modeName)
+    {
+        ModeValue = modeName;
+        modeValueText.text = ModeValue;
     }
 
     public void JoinRoom()

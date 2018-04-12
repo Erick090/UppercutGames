@@ -8,6 +8,9 @@ public class LobbyNetwork : MonoBehaviour {
 
     public static LobbyNetwork Instance;
     public string PlayerName { get; private set; }
+    [SerializeField] public Text connection;
+    [SerializeField] public Text ping;
+
 
     private PhotonView photonView;
 
@@ -32,26 +35,36 @@ public class LobbyNetwork : MonoBehaviour {
 
         photonView = GetComponent<PhotonView>();
 
+        connection.text = "Connecting to Server . . .";
         Debug.Log("Connecting to Server . . .");
+
         PhotonNetwork.ConnectUsingSettings("0.1");
 
     }
 
     private void OnConnectedToMaster()
     {
+        connection.text = "Connected to master.";
         Debug.Log("Connected to master.");
 
     }
 
     private void OnJoinedLobby()
     {
+        connection.text = "Joined lobby.";
         Debug.Log("Joined lobby.");
 
     }
 
     private void OnJoinedRoom()
     {
+        connection.text = "Joined room";
         Debug.Log("Joined room");
+    }
+
+    private void Update()
+    {
+        ping.text = "Ping: " + PhotonNetwork.GetPing().ToString();
     }
 
     public void InitializPlayer()

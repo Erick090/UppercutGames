@@ -271,6 +271,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomNameText: {fileID: 114215501914613580}
+  playerValueText: {fileID: 114308360578393972}
+  modeValueText: {fileID: 114168818887610002}
 --- !u!222 &222280821443894082
 CanvasRenderer:
   m_ObjectHideFlags: 1

@@ -26,9 +26,11 @@ public class RoomManager : MonoBehaviour
     public void OnClick_CreateRoom()
     {
         int max = System.Convert.ToInt32("9");
-        RoomOptions roomOptions = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = System.Convert.ToByte(maxPlayer.text) };
+        RoomOptions roomOptions = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = System.Convert.ToByte(maxPlayer.text)};
+        //roomOptions.CustomRoomProperties.
+        //RoomInfo thisRoom = PhotonNetwork.get
 
-        if(PhotonNetwork.CreateRoom(roomName.text, roomOptions, TypedLobby.Default))
+        if (PhotonNetwork.CreateRoom(roomName.text, roomOptions, TypedLobby.Default))
         {
             Debug.Log("Create Room successfully sent.");
         }
@@ -49,7 +51,7 @@ public class RoomManager : MonoBehaviour
             }
             else if(element.name == "PlayerValue")
             {
-                element.text = maxPlayer.text;
+                element.text = "1/" + roomOptions.MaxPlayers.ToString();
             }
             else if (element.name == "Mode")
             {
@@ -113,6 +115,9 @@ public class RoomManager : MonoBehaviour
         {
             RoomListing roomListing = roomListingHole[index];
             roomListing.SetRoomNameText(room.Name);
+            roomListing.SetPlayerValueText(room.MaxPlayers.ToString(), room.PlayerCount.ToString());
+            //roomListing.SetModeValueText(room.Name);
+
             roomListing.Updated = true;
         }
     }

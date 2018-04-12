@@ -80,11 +80,11 @@ public class Projectile_CTRL : MonoBehaviour {
 
         isShooting = true;
 
-        dirVec = new Direction(LerpShot(5, 0.5f));
+        //dirVec = new Direction(LerpShot(5, 0.5f));
 
         yield return new WaitForSeconds(2);
 
-        dirVec = new Direction(LerpBack);
+        //dirVec = new Direction(LerpBack);
 
         isShooting = false;
         //this.transform.position = Vector3.Lerp(this.transform.position, savedPosition, time);
