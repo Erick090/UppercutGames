@@ -9,47 +9,46 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1440257828722764}
+  m_RootGameObject: {fileID: 1972520586123460}
   m_IsPrefabParent: 1
---- !u!1 &1440257828722764
+--- !u!1 &1972520586123460
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4210750961512108}
-  - component: {fileID: 33182162720742784}
-  - component: {fileID: 23194171838369964}
-  - component: {fileID: 95862605726848072}
-  - component: {fileID: 114124928416731548}
-  - component: {fileID: 64347531231204044}
-  m_Layer: 0
-  m_Name: Ramp
-  m_TagString: JumpPad
+  - component: {fileID: 4963256799976792}
+  - component: {fileID: 33231832656603868}
+  - component: {fileID: 23840605192405558}
+  - component: {fileID: 95533509345453518}
+  - component: {fileID: 64636357944075114}
+  m_Layer: 9
+  m_Name: Plattform_Corner
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4210750961512108
+--- !u!4 &4963256799976792
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1440257828722764}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: -50, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1.0000005, z: 1.0000005}
+  m_GameObject: {fileID: 1972520586123460}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 75, y: 25, z: -75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 180}
---- !u!23 &23194171838369964
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!23 &23840605192405558
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1440257828722764}
+  m_GameObject: {fileID: 1972520586123460}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -58,7 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: b423230c3c1464643895c8233742c835, type: 2}
+  - {fileID: 2100000, guid: 27ddd6c4b7b1bb6409e2a4f40bf839ad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -78,36 +77,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33182162720742784
+--- !u!33 &33231832656603868
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1440257828722764}
-  m_Mesh: {fileID: 4300000, guid: 6ec8678b0f86e4a43884e6ebf97e644b, type: 3}
---- !u!64 &64347531231204044
+  m_GameObject: {fileID: 1972520586123460}
+  m_Mesh: {fileID: 4300000, guid: 515f8a09b46481d4dae98a734e558bbc, type: 3}
+--- !u!64 &64636357944075114
 MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1440257828722764}
+  m_GameObject: {fileID: 1972520586123460}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 6ec8678b0f86e4a43884e6ebf97e644b, type: 3}
---- !u!95 &95862605726848072
+  m_Mesh: {fileID: 4300000, guid: 515f8a09b46481d4dae98a734e558bbc, type: 3}
+--- !u!95 &95533509345453518
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1440257828722764}
+  m_GameObject: {fileID: 1972520586123460}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 6ec8678b0f86e4a43884e6ebf97e644b, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 515f8a09b46481d4dae98a734e558bbc, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -116,15 +115,3 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114124928416731548
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1440257828722764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee5c4abe550a94945964fc39fb579ead, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocity: {x: 0, y: 0, z: 0}
