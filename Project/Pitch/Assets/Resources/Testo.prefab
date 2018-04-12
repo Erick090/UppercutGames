@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 33807612183600874}
   - component: {fileID: 65649043000805794}
   - component: {fileID: 23249428733955428}
+  - component: {fileID: 114314988618802160}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -338,6 +339,21 @@ MonoBehaviour:
   instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
+--- !u!114 &114314988618802160
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1089837592810098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 190e1e6eb054809418e5a89211342d82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedShot: 5
+  speedBack: 5
+  timeShot: 2
+  shotButton: Shot
 --- !u!114 &114333977087815798
 MonoBehaviour:
   m_ObjectHideFlags: 1

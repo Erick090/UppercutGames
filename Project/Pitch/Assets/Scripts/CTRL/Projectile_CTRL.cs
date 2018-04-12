@@ -6,12 +6,24 @@ public class Projectile_CTRL : MonoBehaviour {
 
     delegate Vector3 Direction();
 
-    //public Vector3 EndPositionLeft;
-    //public Vector3 EndPositionRight;
-    //public Vector3 startPosition;
+    [Header("Speed parameters for punch shot")]
+    [Tooltip("Speed of shoot")]
+    [SerializeField]
+    float speedShot = 5f;
+
+    [Tooltip("Speed of back move")]
+    [SerializeField]
+    float speedBack = 5f;
+
+    [Space(5)]
+    [Tooltip("Duration of shot")]
+    [SerializeField]
+    float timeShot = 2f;
 
     bool isShooting = false;
+    Vector3 savedLocalPosition;
 
+    [Space(10)]
     [SerializeField]
     string shotButton = "Shot";
 
@@ -23,22 +35,23 @@ public class Projectile_CTRL : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         //dirVec = new Direction(LerpShot);
+        savedLocalPosition = this.transform.localPosition;
+        print("Saved: " + savedLocalPosition);
+        print("Actual: " + this.transform.localPosition);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        //ChangeDirection();
-
         //if (isShooting)
         //dirVec();
 
-        //if(Input.GetButtonDown(shotButton))
-        //{
+        if (Input.GetButtonDown(shotButton))
+        {
+            StartCoroutine(Shooting());
+        }
 
-        //}
-
-        this.transform.position += new Vector3(0, 0, Time.deltaTime * 5f);
+        PunchShoot(speedShot, speedBack);
 
     }
 
@@ -68,22 +81,16 @@ public class Projectile_CTRL : MonoBehaviour {
     //                                           0.5f);
     //}
 
-    void ChangeDirection()
+    void PunchShoot(float outSpeed, float inSpeed)
     {
-        if (Input.GetButtonDown(shotButton))
-        {
-            //this.transform.position += new Vector3(0, 0, Time.deltaTime * 50 / 0.5f);
-            //StartCoroutine(Shooting(5f, 0.5f));
-            //Instantiate(projectile,)
-        }
-        //StartCoroutine(Shooting(20, 0.5f));
-        //dirVec = new Direction(LerpShot);
+        if (isShooting)
+            this.transform.localPosition += new Vector3(0, 0, Time.deltaTime * outSpeed);
 
-        //if (Input.GetKeyDown(KeyCode.L))
-        //    dirVec = new Direction(LerpBack);
+        if (!isShooting && this.transform.localPosition != savedLocalPosition)
+            this.transform.localPosition = Vector3.MoveTowards(this.transform.localPosition, savedLocalPosition, Time.deltaTime * inSpeed);
     }
 
-    public IEnumerator Shooting(GameObject punchProj, float range)
+    public IEnumerator Shooting()
     {
         ////startPosition = this.transform.localPosition;
 
@@ -95,7 +102,11 @@ public class Projectile_CTRL : MonoBehaviour {
 
         //print("ShootStart");
 
-        yield return new WaitForSeconds(2);
+        isShooting = true;
+
+        yield return new WaitForSeconds(timeShot);
+
+        isShooting = false;
 
         //print("ShootEnd");
 

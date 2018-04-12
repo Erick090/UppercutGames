@@ -254,8 +254,8 @@ public class Char_CTRL : MonoBehaviour {
 
     IEnumerator Punching(float range)
     {
-        GameObject punchProj = punchProjectile;
-        Instantiate(punchProj, this.transform);
+        //GameObject punchProj = punchProjectile;
+        //Instantiate(punchProj, this.transform);
         //Vector3 savedTransform = punchProj.transform.position;
         //punchProj.transform.position = Vector3.Lerp(punchProj.transform.position,
         //                                             new Vector3(punchProj.transform.position.x,
@@ -266,7 +266,7 @@ public class Char_CTRL : MonoBehaviour {
 
         yield return new WaitForSeconds(2);
 
-        Destroy(punchProj);
+        //Destroy(punchProj);
         //punchProj.transform.position = Vector3.Lerp(punchProj.transform.position, savedTransform, time);
     }
 
