@@ -111,6 +111,11 @@ public class Char_CTRL : MonoBehaviour {
             rBody.velocity = transform.TransformDirection(physSetttings.velocity);
         }
 
+        if (Input.GetButtonDown(inputSettings.SHOT_BUTTON))
+        {
+            StartCoroutine(Punching(5f));
+        }
+
         //PunchShot(punchProjectile, inputSettings.SHOT_BUTTON);
 
         //if (Input.GetButtonDown(inputSettings.SHOT_BUTTON))
@@ -247,21 +252,22 @@ public class Char_CTRL : MonoBehaviour {
 
     //}
 
-    IEnumerator Punching(GameObject punchProj, float range, float time)
+    IEnumerator Punching(float range)
     {
-        Vector3 savedTransform = punchProj.transform.position;
-        punchProj.transform.position = Vector3.Lerp(punchProj.transform.position,
-                                                     new Vector3(punchProj.transform.position.x,
-                                                                 punchProj.transform.position.y,
-                                                                 punchProj.transform.position.z + range),
-                                                     time);
-        //punchProj.transform.Translate(punchProj.transform.position.x * Time.deltaTime,
-        //                    punchProj.transform.position.y * Time.deltaTime,
-        //                    (punchProj.transform.position.z + range) * Time.deltaTime);
+        GameObject punchProj = punchProjectile;
+        Instantiate(punchProj, this.transform);
+        //Vector3 savedTransform = punchProj.transform.position;
+        //punchProj.transform.position = Vector3.Lerp(punchProj.transform.position,
+        //                                             new Vector3(punchProj.transform.position.x,
+        //                                                         punchProj.transform.position.y,
+        //                                                         punchProj.transform.position.z + range),
+        //                                             time);
+
 
         yield return new WaitForSeconds(2);
 
-        punchProj.transform.position = Vector3.Lerp(punchProj.transform.position, savedTransform, time);
+        Destroy(punchProj);
+        //punchProj.transform.position = Vector3.Lerp(punchProj.transform.position, savedTransform, time);
     }
 
     private void OnCollisionEnter(Collision collision)
