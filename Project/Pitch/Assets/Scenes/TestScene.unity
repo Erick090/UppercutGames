@@ -3315,34 +3315,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 164eff566628b4fe1ab802c900e383db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSettings:
-    forwardSpeed: 20
-    fBWhileJump: 3
-    leftRightSpeed: 20
-    leftRightJump: 3
-    jumpHeight: 30
-    ground:
-      m_Bits: 4294966984
-  physSetttings:
-    fallMultiplier: 3.5
-    lowJumpMultiplier: 5
-    power: {x: 0, y: 0, z: 0}
-    velocity: {x: 0, y: 0, z: 0}
-  inputSettings:
-    inputDelay: 0.1
-    FORWARD_AXIS: Vertical
-    TURN_AXIS: Horizontal
-    JUMP_AXIS: Jump
-    SHOT_BUTTON: Shot
-  colliderCs: {fileID: 0}
-  targetRotation: {x: 0, y: 0, z: 0, w: 0}
-  rBody: {fileID: 0}
-  forwardInput: 0
-  turnInput: 0
-  jumpInput: 0
-  punchProjectile: {fileID: 0}
-  projectileName: 
-  EndPosition: {x: 0, y: 0, z: 0}
 --- !u!54 &412394408
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -6003,7 +5975,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 201685747}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9999999
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8735,7 +8707,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.9638332, y: 1}
-  m_AnchoredPosition: {x: -0.000030517578, y: -0.000014981681}
+  m_AnchoredPosition: {x: -0.000030517578, y: 0.000013576414}
   m_SizeDelta: {x: 17, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1053160373
@@ -11093,7 +11065,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 868000976}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.99864805
+  m_Size: 0.9898163
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
