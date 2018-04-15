@@ -69,7 +69,7 @@ public class LobbyNetwork : MonoBehaviour {
 
     public void InitializPlayer()
     {
-        GameObject Player = PhotonNetwork.Instantiate("Testo", spawnPos.position, spawnPos.rotation, 0);
+        GameObject Player = PhotonNetwork.Instantiate("TestoErick", spawnPos.position, spawnPos.rotation, 0);
 
         if (lobbyCam.GetPhotonView().isMine)
         {
