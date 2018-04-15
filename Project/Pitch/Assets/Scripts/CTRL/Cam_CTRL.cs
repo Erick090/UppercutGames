@@ -8,7 +8,6 @@ public class Cam_CTRL : Game_CTRL {
     [SerializeField] private float lookSensitivity = 5;
     [SerializeField] private float lookSmoothDamp = 0.1f;
 
-    [Space(10, order = 1)]
     [SerializeField] private GameObject player;
 
     #region rotationProperties
@@ -46,7 +45,25 @@ public class Cam_CTRL : Game_CTRL {
         xRotation += Input.GetAxis("Mouse Y") * lookSensitivity;
 
         // use Formula from geogebra here = f(x) = x²/10
-        this.transform.position -= new Vector3(0, Input.GetAxis("Mouse Y") * lookSensitivity, 0);
+        Vector3 playerVec = player.transform.position;
+        Vector3 cameraVec = this.transform.position;
+        playerVec.x = 0;
+        cameraVec.x = 0;
+
+        Vector3 dirVec = (playerVec - cameraVec).normalized;
+
+        //this.transform.position = playerVec + (dirVec * 5);
+        if(xRotation > 0)
+        {
+            this.transform.localPosition += new Vector3(0, (Mathf.Pow(Input.GetAxis("Mouse Y"), 2)) * lookSensitivity, 0);
+        }
+
+        else
+        {
+            this.transform.localPosition -= new Vector3(0, (Mathf.Pow(Input.GetAxis("Mouse Y"), 2)) * lookSensitivity, 0);
+        }
+
+        this.transform.localPosition = new Vector3(this.transform.localPosition.x, Mathf.Clamp(this.transform.localPosition.y, 0, 15f), this.transform.localPosition.z);
         xRotation = Mathf.Clamp(Input.GetAxis("Mouse Y") * lookSensitivity, 0, 3);
         //this.transform.position = new Vector3(xRotation,Mathf.Clamp(transform.localPosition.y, 0, 3), 0);
         //currentXRotation = Mathf.SmoothDamp(currentXRotation, xRotation, ref xRotationV, lookSmoothDamp);
